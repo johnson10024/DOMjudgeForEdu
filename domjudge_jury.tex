@@ -1,0 +1,258 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Simple}
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{ulem} % delete lines
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    filecolor=magenta
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+% The title
+\title[short title]{DOMjudge Jury 指南}
+
+\author{張源峷}
+\date{}
+
+\begin{document}
+
+
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}{目錄}
+        \tableofcontents
+    \end{frame}
+
+%------------------------------------------------
+    \section{說明}
+%------------------------------------------------
+
+    \begin{frame}{說明}
+        \centerline{本Manual簡單介紹如何使用DOMjudge的裁判介面評測繳交程式，以及簡單功能說明}
+    \end{frame}
+
+%------------------------------------------------
+    \section{創建帳號}
+%------------------------------------------------
+
+    \begin{frame}{創建帳號: 創建隊伍(team)}
+        \begin{itemize}
+            \item 進入 \href{http://127.0.0.1}{judge} 並點擊右上角的Login按鈕
+            \includegraphics[height=30pt]{programming/domjudge_figure/1_login.png}
+            \item 登入公用帳號 \newline
+                帳號: public \newline
+                密碼: public2022
+            \item Teams/Add new team
+            \item 新增隊伍 \newline
+                Team name: 隊伍名稱\newline
+                Display name: 顯示在Scoreboard上的名稱\newline
+                Category: 選Observers\newline
+                勾選Add user for this team \newline
+                Username: 登入用帳號 \newline
+                按Save保存
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{創建帳號: 設定使用者}
+        \begin{itemize}
+            \item 按左上角Logo回到Jury interface
+            \item 進入Users
+            \item 點擊剛才輸入的Username右邊的\includegraphics[height=15pt]{programming/domjudge_figure/icon_edit.png}按鈕(或是點進去後按Edit)
+            \item 編輯使用者
+                \begin{itemize}
+                    \item 設定Password\textbf{*一定要設! 空密碼無法登入}
+                    \item 設定角色: 如下圖所示\\
+                    \includegraphics[height=90pt]{programming/domjudge_figure/role.png}
+                    \item 按Save保存
+                \end{itemize}
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{創建帳號: 登入及確認設定}
+        \begin{itemize}
+            \item 點擊右上角的頭像 $\rightarrow$ Logout \\
+            \includegraphics[height=60pt]{programming/domjudge_figure/logout.png}
+            \item 用剛才的帳號密碼登入
+            \item Public帳號暫時僅作創建帳號使用，之後操作請儘量用剛才創建的帳號
+            \item 間諜同學\underline{陳筱玲} (同學帳號測試用) \\
+                帳號: Student1 \\
+                密碼: stu1
+        \end{itemize}
+    \end{frame}
+    
+%------------------------------------------------
+    \section{介面說明}
+%------------------------------------------------
+
+    \begin{frame}{介面說明: Navigation Bar}
+        \includegraphics[width=400pt]{programming/domjudge_figure/nav_l.png} \\
+        常用功能:
+        \begin{enumerate}
+            \item DOMjudge Logo: 進入DOMjudge Jury interface
+            \item submissions: 管理繳交狀況
+            \item scoreboard: 進入計分板
+            \item team: 隊伍模式
+        \end{enumerate} \par
+        
+        \includegraphics[height=25pt]{programming/domjudge_figure/nav_r.png}\\
+        常用功能:
+        \begin{enumerate}
+            \item 頭像: 帳號動作(開關通知、登出)
+            \item 獎盃: 當前比賽
+            \item 時鐘: 當前比賽剩餘時間 \sout{防疫大將軍}
+        \end{enumerate}
+        
+    \end{frame}
+
+    \subsection{計分板}
+    \begin{frame}{介面說明:計分板(Scoreboard)}
+        \centerline{\includegraphics[height=100pt]{programming/domjudge_figure/scoreboard.png}}
+        \begin{enumerate}
+            \item 隊伍名稱
+            \item 分數(題數|總Penalty) \\
+                各題Penalty計算方式: AC時間(分鐘) + 罰時$\times$錯誤次數
+            \item 題目簡稱
+            \item 正確人數 / 錯誤人數
+        \end{enumerate}
+        
+        *左上角有Filter可以使用
+    \end{frame}
+    
+    \subsection{上傳紀錄}
+    \begin{frame}{介面說明:上傳紀錄(Submissions)}
+        \centerline{\includegraphics[width=400pt]{programming/domjudge_figure/sub_title.png}}
+        \begin{itemize}
+            \item result: 評判結果 \\
+            \begin{itemize}
+                \item \textbf{\textcolor{gray}{JUDGING}}: 評判中
+                \item \textbf{\textcolor{OliveGreen}{CORRECT}}(AC): 答案正確
+                \item \textbf{\textcolor{red}{WRONG-ANSWER}}(WA): 答案有誤
+                \item \textbf{\textcolor{red}{TIMELIMIT}}(TLE): 解題程式執行時間過久
+                \item \textbf{\textcolor{red}{RUN-ERROR}}(RE): 解題程式遇到執行時期錯誤
+                \item \textbf{\textcolor{red}{COMPILER-ERROR}}(CE): 解題程式編譯失敗
+            \end{itemize}
+            \item test results: 各測資解答狀況
+        \end{itemize}
+        
+        *左上角有Filter可以使用 \\
+        *可以點進各別紀錄查看詳細(接下頁)
+    \end{frame}
+    
+    \begin{frame}{介面說明:上傳紀錄(Submissions)}
+        詳細統計 \\
+        \centerline{\includegraphics[height=150pt]{programming/domjudge_figure/sub_info.png}}
+        \begin{itemize}
+            \item Rejudge: 重新評測此題(通常測資有改時用)
+            \item View source code: 可以看到程式碼檔案並修改/測試
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{隊伍模式}
+    \begin{frame}{介面說明:隊伍模式}
+        *此畫面與學生看到的畫面一致(學生無Jury按鈕) \\
+        \includegraphics[height=25pt]{programming/domjudge_figure/team_navbar.png}
+        \begin{itemize}
+            \item Problemset: 該比賽的題目總覽
+            \item Jury: 回到Jury Interface
+            \item Submit: 上傳解答程式
+        \end{itemize}
+        
+        *可以在此上傳程式測試題目
+    \end{frame}
+    
+%------------------------------------------------
+    \section{出題指南}
+%------------------------------------------------
+
+    \subsection{如何出題}
+    \begin{frame}{如何出題}
+        \begin{enumerate}
+            \item 寫好題本: 將敍述說明清楚、確定輸入/輸出格式
+            \item AC Code: 用自己預設的做法寫出正確答案
+            \item 生產測資及答案檔\\
+            \begin{itemize}
+                \item 用random或手動方式產生測試資料 \\
+                    建議順序: 範例測資 $\rightarrow$ 小測資 $\rightarrow$ 大測資(邊界測資)
+                \item 將測資丟進AC Code，產生答案
+            \end{itemize}
+            \item 上傳至DOMjudge並測試題目
+        \end{enumerate}
+    \end{frame}
+    
+    \subsection{上傳題目}
+    \begin{frame}{上傳題目}
+        zip壓縮檔格式: \\
+        \includegraphics[height=120pt]{programming/domjudge_figure/probzip_tree.png} \\
+        \begin{itemize}
+            \item problem.pdf: 題本
+            \item data/sectet/*.in: 測資
+            \item data/secret/*.ans: 答案
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{上傳題目}
+        \begin{itemize}
+            \item 至 Jury interface/Problems \\
+            \includegraphics[height=100pt]{programming/domjudge_figure/prob.png}
+            \item 選擇比賽 $\rightarrow$ 瀏覽壓縮檔(壓縮檔檔名會作為該題名稱)
+            \item 按Upload上傳
+            \item 出現如\includegraphics[height=1.5em]{programming/domjudge_figure/prob_ok.png}等訊息即為成功
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{上傳題目}
+        (上傳完應該會停留在該題畫面，或可以至 Jury interface/Problems 再點選該題)\\
+        \centerline{\includegraphics[height=150pt]{programming/domjudge_figure/prob_edit.png}}
+        \begin{itemize}
+            \item 按Edit編輯
+            \item 調整時間限制等參數
+            \item 按Save儲存
+        \end{itemize}
+    \end{frame}
+    
+    \subsection{題目範例}
+    \begin{frame}{題目範例}
+        \begin{itemize}
+            \item 題本範例(模板): hw\_problems/problem\_template.tex
+            \item AC Code 範例(ac.cpp) \\
+                \vspace{0.5em}
+                \includegraphics[height=150pt]{programming/domjudge_figure/ac.png}
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{題目範例}
+        \begin{itemize}
+            \item 亂數測資產生器範例(rand.cpp) \\
+                \vspace{0.5em}
+                \includegraphics[height=150pt]{programming/domjudge_figure/rand.png}
+            \item 另參考C++亂數如uniform\_int\_distribution
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{題目範例}
+        \begin{itemize}
+            \item 亂數產生測資及產生解答 \\
+            \vspace{0.5em}
+            \includegraphics[width=400pt]{programming/domjudge_figure/run_data.png}
+        \end{itemize}
+    \end{frame}
+    
+    
+    
+\end{document}

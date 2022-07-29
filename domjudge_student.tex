@@ -1,0 +1,126 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Simple}
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{ulem} % delete lines
+\usepackage{multicol}
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    filecolor=magenta
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+% The title
+\title[short title]{DOMjudge使用教學}
+
+\author{}
+\date{}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}{目錄}
+        \tableofcontents
+    \end{frame}
+
+%------------------------------------------------
+    \section{登入}
+%------------------------------------------------
+
+    \begin{frame}{登入}
+        judge 網址: \url{http://127.0.0.1} \par
+        
+        \vspace{1em}
+        進入網站後點選右上角的Login登入 \par
+        \includegraphics[width=400pt]{programming/domjudge_figure/stu_login.png} \\
+        *帳號及密碼皆為學號 \\
+        \vspace{1em}
+        \textbf{\textcolor{red}{請勿隨意登入他人帳號！若有以上情事發生造成同學成績受影響，將與老師討論嚴懲}}
+        
+    \end{frame}
+
+%------------------------------------------------
+    \section{介面說明}
+%------------------------------------------------    
+    
+    \subsection{Navigation Bar}
+    \begin{frame}{Navigation Bar}
+        \centerline{\includegraphics[width=400pt]{programming/domjudge_figure/nav_stu.png}}
+        \begin{enumerate}
+            \item 首頁： 就\;首頁
+            \item 題目總覽： 該次Contest的題目總覽(題本、範例測資)
+            \item 計分版： 可查看所有人解題狀況
+            \item 上傳： 繳交檔案
+            \item 登出
+            \item 切換Contest： 每週皆為不同Contest, demo contest為自行測試用
+            \item Contest剩餘時間
+        \end{enumerate}
+    \end{frame}
+    
+    \subsection{首頁}
+    \begin{frame}{首頁}
+        \centerline{\includegraphics[width=400pt]{programming/domjudge_figure/home.png}}
+        \begin{itemize}
+            \item Submissions: 繳交結果紀錄
+            \item Clarifications: 可針對題目利用\includegraphics[height=1.5em]{programming/domjudge_figure/req_cla.png}發 問 \\
+            *請針對題目內容(如敍述不清，請不要問解法或錯哪裡)發問，其他問題請利用助教信箱
+        \end{itemize}
+        
+    \end{frame}
+ 
+ %------------------------------------------------
+    \section{上傳程式碼(Submit)}
+%------------------------------------------------ 
+
+    \begin{frame}{上傳程式碼(Submit)}
+        \begin{multicols}{2}
+            \includegraphics[width=200pt]{programming/domjudge_figure/upload.png} \\
+            \vspace{1em}
+            \begin{itemize}
+                \item Source files: 選擇程式碼檔案
+                \item Problem: 選擇題目
+                \item Language: 選擇撰寫語言
+            \end{itemize}
+            \vspace{1em}
+            成功上傳後回到首頁查看結果(說明見下頁)
+        \end{multicols}
+    \end{frame}
+    
+    \begin{frame}{上傳程式碼(Submit)}
+    
+        \textbf{注意事項} \\
+        *請\textbf{勿}輸出題目未提及的輸出(e.g.「請輸入一個數字:」)，否則不會通過 \\
+        *評測系統有隱藏測試資料，\textbf{範例正確不代表解答程式正確} \\
+        *無部分給分機制，得到\textbf{\textcolor{OliveGreen}{CORRECT}}才能拿到該題分數 \\
+        *請自行測試程式可以編譯及輸出符合範例測資再上傳
+        
+        \vspace{1em}
+        可能結果說明:
+        \begin{itemize}
+                \item \textbf{\textcolor{gray}{PENDING}}: 評判中
+                \item \textbf{\textcolor{OliveGreen}{CORRECT}}(AC): 答案正確
+                \item \textbf{\textcolor{red}{WRONG-ANSWER}}(WA): 答案有誤
+                \item \textbf{\textcolor{red}{NO-OUTPUT}}: 程式無輸出
+                \item \textbf{\textcolor{red}{TIMELIMIT}}(TLE): 程式執行時間過久
+                \item \textbf{\textcolor{red}{RUN-ERROR}}(RE): 程式遇到執行時期錯誤
+                \item \textbf{\textcolor{red}{COMPILER-ERROR}}(CE): 程式碼編譯失敗
+        \end{itemize}
+        
+    \end{frame}
+
+\end{document}
