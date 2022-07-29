@@ -1,0 +1,17 @@
+SELECT rankcache.teamid, team.name, rankcache.points_public
+FROM rankcache
+LEFT JOIN team ON rankcache.teamid=team.teamid
+WHERE rankcache.cid = 4 AND team.categoryid=6
+ORDER BY rankcache.teamid
+INTO OUTFILE './Score.csv' CHARACTER SET 'utf8mb3' FIELDS TERMINATED BY ',';
+
+
+
+
+
+echo "SELECT submission.submitid, submission.cid, submission.teamid \
+FROM submission \
+LEFT JOIN (judging, team) \
+ON (submission.cid=judging.cid AND submission.submitid=judging.submitid AND submission.teamid=team.teamid) \
+WHERE submission.cid=3 AND submission.probid=18 AND judging.result='correct' AND team.categoryid=3 \
+ORDER BY teamid" > script.sql && ./getlist.sh
